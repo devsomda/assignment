@@ -8,8 +8,17 @@
   font-weight: 500;
 
   color: #000;
+
+  position: relative;
 }
 
 .whiteHeader {
   color: #fff;
+}
+
+.header button {
+  position: absolute;
+  right: 12px;
+  top: 15px;
+  cursor: help;
 }

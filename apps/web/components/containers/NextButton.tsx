@@ -4,13 +4,19 @@ import { useRouter } from "next/navigation";
 import { useMediaQuery } from "@hooks/useMedieaQuery";
 import { usePhotoQuery } from "@hooks/usePhotoQuery";
 import { usePhotoStore } from "@hooks/usePhotoStore";
+import { useEffect } from "react";
 
 export default function NextButton() {
   const router = useRouter();
   const { isDesktop } = useMediaQuery();
 
   const { refetch, isFetching } = usePhotoQuery();
-  const { setPhoto } = usePhotoStore();
+  const { photo, setPhoto } = usePhotoStore();
+
+  // 조회 이력이 있으면 자동으로 이동
+  useEffect(() => {
+    if (photo) router.push("/result");
+  }, [photo, router]);
 
   const handleClick = async () => {
     const result = await refetch();
