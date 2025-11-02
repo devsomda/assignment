@@ -1,54 +1,46 @@
 .button {
-  width: 335px;
-  padding: 12px;
-
-  background-color: #111111;
-  color: #ffffff;
-
-  border: none;
-  border-radius: 8px;
-
-  font-weight: 600;
-  cursor: pointer;
-
-  transition: background-color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
 
-  /* 반응형 */
+  border: none;
+  border-radius: 12px;
+  background-color: #111111;
+  color: #ffffff;
+
+  padding: 12px;
+  transition: background-color 0.2s ease;
+}
+
+/* Default (medium) */
+.medium {
+  width: 335px;
   height: 48px;
   font-size: 16px;
 }
 
+/* Small */
+.small {
+  width: 154px;
+  height: 48px;
+  font-size: 16px;
+}
+
+/* Large */
+.large {
+  width: 335px;
+  height: 60px;
+  font-size: 24px;
+}
+
+/* Hover & Active */
 .button:hover,
 .button:active {
-  background-color: #111111cc; /* 투명도 80% */
+  background-color: #111111cc;
 }
 
 .button:focus {
   outline: none;
-}
-
-/* Tablet */
-@media screen and (min-width: 768px) and (max-width: 1439px) {
-  .responsiveButton {
-    width: 154px;
-    height: 48px;
-    font-size: 16px;
-  }
-}
-
-/* Desktop */
-@media screen and (min-width: 1440px) {
-  .button {
-    height: 60px;
-    font-size: 24px;
-  }
-
-  .responsiveButton {
-    width: 154px;
-    height: 48px;
-    font-size: 16px;
-  }
 }

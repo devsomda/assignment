@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@repo/ui/button";
 import { useRouter } from "next/navigation";
 import ResultSection from "@components/ui/ResultSection";
+import { useMediaQuery } from "@hooks/useMedieaQuery";
 
 interface PhotoData {
   id: string;
@@ -19,6 +20,7 @@ interface PhotoData {
 export default function ResultPage() {
   const [photoData, setPhotoData] = useState<PhotoData | null>(null);
   const router = useRouter();
+  const { isMobile } = useMediaQuery();
 
   useEffect(() => {
     const storedData = sessionStorage.getItem("photoData");
@@ -71,7 +73,11 @@ export default function ResultPage() {
           valueClassName={styles.underlineText}
         />
 
-        <Button type="button" onClick={() => router.back()} isResponsive>
+        <Button
+          size={isMobile ? "medium" : "small"}
+          type="button"
+          onClick={() => router.back()}
+        >
           이전
         </Button>
       </div>

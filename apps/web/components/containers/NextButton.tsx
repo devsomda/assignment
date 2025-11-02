@@ -1,9 +1,11 @@
 "use client";
 import { Button } from "@repo/ui/button";
 import { useRouter } from "next/navigation";
+import { useMediaQuery } from "@hooks/useMedieaQuery";
 
 export default function NextButton() {
   const router = useRouter();
+  const { isDesktop } = useMediaQuery();
 
   const handleClick = async () => {
     console.log("NextButton clicked");
@@ -14,7 +16,11 @@ export default function NextButton() {
   };
 
   return (
-    <Button type="button" onClick={handleClick}>
+    <Button
+      size={isDesktop ? "large" : "medium"}
+      type="button"
+      onClick={handleClick}
+    >
       다음
     </Button>
   );
