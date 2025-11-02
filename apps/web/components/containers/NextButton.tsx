@@ -2,17 +2,22 @@
 import { Button } from "@repo/ui/button";
 import { useRouter } from "next/navigation";
 import { useMediaQuery } from "@hooks/useMedieaQuery";
+import { usePhotoQuery } from "@hooks/usePhotoQuery";
+import { usePhotoStore } from "@hooks/usePhotoStore";
 
 export default function NextButton() {
   const router = useRouter();
   const { isDesktop } = useMediaQuery();
 
+  const { refetch, isFetching } = usePhotoQuery();
+  const { setPhoto } = usePhotoStore();
+
   const handleClick = async () => {
-    console.log("NextButton clicked");
-    const response = await fetch("https://picsum.photos/id/0/info");
-    const data = await response.json();
-    sessionStorage.setItem("photoData", JSON.stringify(data));
-    router.push("/result");
+    const result = await refetch();
+    if (result.data) {
+      setPhoto(result.data);
+      router.push("/result");
+    }
   };
 
   return (
@@ -21,7 +26,7 @@ export default function NextButton() {
       type="button"
       onClick={handleClick}
     >
-      다음
+      {isFetching ? "로딩중..." : "다음"}
     </Button>
   );
 }

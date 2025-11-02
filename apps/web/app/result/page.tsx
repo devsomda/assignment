@@ -1,44 +1,44 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { Button } from "@repo/ui/button";
 import { useRouter } from "next/navigation";
 import ResultSection from "@components/ui/ResultSection";
 import { useMediaQuery } from "@hooks/useMedieaQuery";
-
-interface PhotoData {
-  id: string;
-  author: string;
-  url: string;
-  download_url: string;
-  height: number;
-  width: number;
-}
+import { usePhotoStore } from "@hooks/usePhotoStore";
 
 export default function ResultPage() {
-  const [photoData, setPhotoData] = useState<PhotoData | null>(null);
   const router = useRouter();
   const { isMobile } = useMediaQuery();
 
-  useEffect(() => {
-    const storedData = sessionStorage.getItem("photoData");
-    if (storedData) {
-      setPhotoData(JSON.parse(storedData));
-    }
-  }, []);
+  const { photo, hasHydrated } = usePhotoStore();
 
-  const imageAlt = photoData?.author
-    ? `${photoData.author}의 사진`
-    : "사진 없음";
+  // 사진 조회 이력 없으면 1초 뒤 리다이렉트
+  useEffect(() => {
+    if (hasHydrated && !photo) {
+      const timer = setTimeout(() => router.push("/"), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [photo, hasHydrated, router]);
+
+  if (!hasHydrated) {
+    return <p>로딩 중...</p>;
+  }
+
+  if (hasHydrated && !photo) {
+    return <p>사진 조회 이력이 없습니다. 메인으로 이동합니다...</p>;
+  }
+
+  const imageAlt = photo?.author ? `${photo.author}의 사진` : "사진 없음";
 
   return (
     <div className={styles.page}>
       <div className={styles.photoContainer}>
-        {photoData?.download_url ? (
+        {photo?.download_url ? (
           <Image
-            src={photoData.download_url}
+            src={photo.download_url}
             alt={imageAlt}
             fill
             style={{ objectFit: "cover" }}
@@ -51,25 +51,25 @@ export default function ResultPage() {
       <div className={styles.resultContainer}>
         <ResultSection
           key1="id"
-          value1={photoData?.id}
+          value1={photo?.id}
           key2="Author"
-          value2={photoData?.author}
+          value2={photo?.author}
           isResponsive
         />
 
         <ResultSection
           key1="width"
-          value1={photoData?.width}
+          value1={photo?.width}
           key2="height"
-          value2={photoData?.height}
+          value2={photo?.height}
           isResponsive
         />
 
         <ResultSection
           key1="url"
-          value1={photoData?.url}
+          value1={photo?.url}
           key2="download_url"
-          value2={photoData?.download_url}
+          value2={photo?.download_url}
           valueClassName={styles.underlineText}
         />
 
