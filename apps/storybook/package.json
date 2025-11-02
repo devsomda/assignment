@@ -12,9 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@repo/ui": "workspace:*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@repo/ui": "workspace:*"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.2",
@@ -25,11 +23,11 @@
     "@storybook/addons": "^7.6.17",
     "@storybook/react": "^10.0.2",
     "@storybook/react-vite": "^10.0.2",
+    "@vitest/browser-playwright": "^4.0.6",
+    "@vitest/coverage-v8": "^4.0.6",
+    "playwright": "^1.56.1",
     "storybook": "^10.0.2",
     "typescript": "^5.3.3",
-    "vitest": "^4.0.6",
-    "playwright": "^1.56.1",
-    "@vitest/browser-playwright": "^4.0.6",
-    "@vitest/coverage-v8": "^4.0.6"
+    "vitest": "^4.0.6"
   }
 }
