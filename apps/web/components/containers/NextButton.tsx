@@ -25,8 +25,9 @@ export default function NextButton() {
       size={isDesktop ? "large" : "medium"}
       type="button"
       onClick={handleClick}
+      isLoading={isFetching}
     >
-      {isFetching ? "로딩중..." : "다음"}
+      다음
     </Button>
   );
 }

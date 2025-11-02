@@ -9,6 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   size?: ButtonSize;
   className?: string;
+  isLoading?: boolean;
 }
 
 // 클래스네임 조합 유틸
@@ -19,17 +20,19 @@ export const Button = ({
   children,
   className,
   size = "medium",
+  isLoading = false,
   ...rest
 }: ButtonProps) => {
   const buttonClassName = combineClasses(
     styles.button,
     styles[size],
+    isLoading && styles.loading,
     className
   );
 
   return (
     <button className={buttonClassName} {...rest}>
-      {children}
+      {isLoading ? <span className={styles.spinner} /> : children}
     </button>
   );
 };
