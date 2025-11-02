@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  height: var(--header-height);
+  padding: 17px 0;
+
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+}
