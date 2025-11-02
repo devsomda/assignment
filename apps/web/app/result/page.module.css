@@ -1,0 +1,134 @@
+/* 페이지 레이아웃 */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* 배경 그라데이션 */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #d9d9d9, #d9d9d900);
+  z-index: -2;
+}
+
+/* TODO: 배경 이미지 및 노이즈 디자인 적용
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://picsum.photos/id/0/800/600") center/cover no-repeat;
+  background-size: 200%;
+  opacity: 0.1;
+  z-index: -2;
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/noise.png") repeat;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+*/
+
+/* 사진 컨테이너 */
+.photoContainer {
+  width: 100%;
+  height: 223.3px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 결과 컨테이너 */
+.resultContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* 결과 섹션 (기본) */
+.resultSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #00000001;
+  border-radius: 16px;
+  background-color: #fff;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* 결과 섹션 아이템 */
+.resultSectionItem {
+  width: 100%;
+}
+
+/* 결과 섹션 텍스트 스타일 */
+.resultSection p {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111111;
+  padding: 0;
+  margin: 0;
+}
+
+/* 텍스트 스타일 유틸리티 */
+.opacityText {
+  opacity: 0.5;
+}
+
+.underlineText {
+  text-decoration: underline;
+}
+
+/* 반응형: 태블릿 (768px ~ 1439px) */
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .photoContainer {
+    height: 485px;
+  }
+
+  .responsiveSection {
+    flex-direction: row;
+    gap: 16px;
+    justify-content: space-between;
+  }
+}
+
+/* 반응형: 데스크톱 (1440px 이상) */
+@media screen and (min-width: 1440px) {
+  .page {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .photoContainer {
+    width: 50%;
+    height: 439.7px;
+  }
+
+  .resultContainer {
+    width: 50%;
+  }
+
+  .responsiveSection {
+    flex-direction: row;
+    gap: 16px;
+  }
+}

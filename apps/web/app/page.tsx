@@ -1,5 +1,5 @@
-import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
+import NextButton from "./_components/NextButton";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         </p>
       </main>
       <footer className={styles.footer}>
-        <Button type="button">다음</Button>
+        <NextButton />
       </footer>
     </div>
   );
