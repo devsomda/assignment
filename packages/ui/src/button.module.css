@@ -1,0 +1,39 @@
+.button {
+  width: 335px;
+  padding: 12px;
+
+  background-color: #111111;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 반응형 */
+  height: 48px;
+  font-size: 16px;
+}
+
+.button:hover,
+.button:active {
+  background-color: #111111cc; /* 투명도 80% */
+}
+
+.button:focus {
+  outline: none;
+}
+
+/* Desktop */
+@media screen and (min-width: 1440px) {
+  .button {
+    height: 60px;
+    font-size: 24px;
+  }
+}
