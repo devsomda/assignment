@@ -8,7 +8,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@components/*": ["./components/*"],
+      "@hooks/*": ["./hooks/*"]
     }
   },
   "include": [

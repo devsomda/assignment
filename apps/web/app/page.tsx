@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import NextButton from "./_components/NextButton";
+import NextButton from "@components/containers/NextButton";
 
 export default function Home() {
   return (

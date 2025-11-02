@@ -1,15 +1,5 @@
-import localFont from "next/font/local";
 import "./globals.css";
-import Header from "./_components/Header";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-});
+import Header from "@components/ui/Header";
 
 export default function RootLayout({
   children,
@@ -18,7 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
         <Header />
         <main className="main">{children}</main>
       </body>
