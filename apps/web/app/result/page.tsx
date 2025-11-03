@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import ResultSection from "@components/ui/ResultSection";
 import { useMediaQuery } from "@hooks/useMedieaQuery";
 import { usePhotoStore } from "@hooks/usePhotoStore";
+import Loading from "@repo/ui/loading";
 
 export default function ResultPage() {
   const router = useRouter();
@@ -24,11 +25,19 @@ export default function ResultPage() {
   }, [photo, hasHydrated, router]);
 
   if (!hasHydrated) {
-    return <p>로딩 중...</p>;
+    return (
+      <div className={styles.page}>
+        <Loading />
+      </div>
+    );
   }
 
   if (hasHydrated && !photo) {
-    return <p>사진 조회 이력이 없습니다. 메인으로 이동합니다...</p>;
+    return (
+      <div className={styles.page}>
+        <p>사진 조회 이력이 없습니다. 메인으로 이동합니다...</p>
+      </div>
+    );
   }
 
   const imageAlt = photo?.author ? `${photo.author}의 사진` : "사진 없음";

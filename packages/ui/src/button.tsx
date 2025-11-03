@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import styles from "./button.module.css";
+import Loading from "./loading";
 
 type ButtonSize = "small" | "medium" | "large";
 
@@ -32,7 +33,7 @@ export const Button = ({
 
   return (
     <button className={buttonClassName} {...rest}>
-      {isLoading ? <span className={styles.spinner} /> : children}
+      {isLoading ? <Loading /> : children}
     </button>
   );
 };
