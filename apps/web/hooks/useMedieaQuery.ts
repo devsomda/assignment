@@ -14,8 +14,7 @@ export function useMediaQuery() {
   }, []);
 
   const isMobile = windowWidth !== null && windowWidth < 768;
-  const isTablet =
-    windowWidth !== null && windowWidth >= 768 && windowWidth < 1440;
+  const isTablet = windowWidth !== null && windowWidth >= 768 && windowWidth < 1440;
   const isDesktop = windowWidth !== null && windowWidth >= 1440;
 
   return { isMobile, isTablet, isDesktop };

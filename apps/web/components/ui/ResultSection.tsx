@@ -20,13 +20,10 @@ export default function ResultSection({
 }: ResultSectionProps) {
   const sectionClassName = combineClasses(
     styles.resultSection,
-    isResponsive && styles.responsiveSection
+    isResponsive && styles.responsiveSection,
   );
 
-  const valueClassNameCombined = combineClasses(
-    styles.opacityText,
-    valueClassName
-  );
+  const valueClassNameCombined = combineClasses(styles.opacityText, valueClassName);
 
   const formatValue = (value: string | number | undefined): string => {
     if (value === undefined) return "-";

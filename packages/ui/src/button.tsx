@@ -28,7 +28,7 @@ export const Button = ({
     styles.button,
     styles[size],
     isLoading && styles.loading,
-    className
+    className,
   );
 
   return (

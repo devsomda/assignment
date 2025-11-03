@@ -36,6 +36,6 @@ export const usePhotoStore = create<PhotoStore>()(
         // persist가 로컬스토리지에서 데이터를 복원한 직후 호출됨.
         state?.setHasHydrated(true);
       },
-    }
-  )
+    },
+  ),
 );

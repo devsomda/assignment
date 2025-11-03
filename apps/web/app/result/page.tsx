@@ -19,10 +19,7 @@ export default function ResultPage() {
   useEffect(() => {
     if (photo?.download_url) {
       // CSS 변수로 배경 이미지 주입
-      document.documentElement.style.setProperty(
-        "--photo-bg",
-        `url(${photo.download_url})`
-      );
+      document.documentElement.style.setProperty("--photo-bg", `url(${photo.download_url})`);
     }
   }, [photo]);
 
@@ -57,12 +54,7 @@ export default function ResultPage() {
       <div className={styles.gradient} />
       <div className={styles.photoContainer}>
         {photo?.download_url ? (
-          <Image
-            src={photo.download_url}
-            alt={imageAlt}
-            fill
-            style={{ objectFit: "cover" }}
-          />
+          <Image src={photo.download_url} alt={imageAlt} fill style={{ objectFit: "cover" }} />
         ) : (
           <p>사진 없음</p>
         )}
@@ -93,11 +85,7 @@ export default function ResultPage() {
           valueClassName={styles.underlineText}
         />
 
-        <Button
-          size={isMobile ? "medium" : "small"}
-          type="button"
-          onClick={() => router.back()}
-        >
+        <Button size={isMobile ? "medium" : "small"} type="button" onClick={() => router.back()}>
           이전
         </Button>
       </div>

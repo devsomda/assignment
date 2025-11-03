@@ -10,7 +10,7 @@ export default function Header() {
 
   const headerClassName = combineClasses(
     styles.header,
-    pathname === "/result" && styles.whiteHeader
+    pathname === "/result" && styles.whiteHeader,
   );
 
   return (
