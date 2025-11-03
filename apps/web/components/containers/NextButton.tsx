@@ -19,6 +19,8 @@ export default function NextButton() {
   }, [photo, router]);
 
   const handleClick = async () => {
+    // memo. debounce 대신 중복 클릭 방지를 위해 추가
+    if (isFetching) return;
     const result = await refetch();
     if (result.data) {
       setPhoto(result.data);
