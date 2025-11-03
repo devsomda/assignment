@@ -16,6 +16,16 @@ export default function ResultPage() {
 
   const { photo, hasHydrated } = usePhotoStore();
 
+  useEffect(() => {
+    if (photo?.download_url) {
+      // CSS 변수로 배경 이미지 주입
+      document.documentElement.style.setProperty(
+        "--photo-bg",
+        `url(${photo.download_url})`
+      );
+    }
+  }, [photo]);
+
   // 사진 조회 이력 없으면 1초 뒤 리다이렉트
   useEffect(() => {
     if (hasHydrated && !photo) {
@@ -44,6 +54,7 @@ export default function ResultPage() {
 
   return (
     <div className={styles.page}>
+      <div className={styles.gradient} />
       <div className={styles.photoContainer}>
         {photo?.download_url ? (
           <Image

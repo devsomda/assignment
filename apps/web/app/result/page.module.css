@@ -2,42 +2,44 @@
 .page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   gap: 40px;
   padding: 0 20px;
   box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
 }
 
-/* 배경 그라데이션 */
+/* 배경 이미지 */
 .page::before {
   content: "";
-  position: absolute;
+  position: fixed;
+  inset: 0;
+  /* memo. tsx에서 넣은 이미지, 요소 중앙 배치, 원본 크기 유지, 반복 X */
+  background: var(--photo-bg) center center / auto no-repeat;
+  filter: blur(10px);
+  opacity: 0.3;
+  z-index: -3;
+  transition: background 0.3s ease;
+}
+
+/* gradient 레이어 */
+.gradient {
+  position: fixed;
   inset: 0;
   background: linear-gradient(to bottom, #d9d9d9, #d9d9d900);
   z-index: -2;
 }
 
-/* TODO: 배경 이미지 및 노이즈 디자인 적용
-.page::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("https://picsum.photos/id/0/800/600") center/cover no-repeat;
-  background-size: 200%;
-  opacity: 0.1;
-  z-index: -2;
-}
-
+/* 노이즈 레이어 */
 .page::after {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: url("/noise.png") repeat;
   mix-blend-mode: overlay;
-  pointer-events: none;
+  z-index: -1;
 }
-*/
 
 /* 사진 컨테이너 */
 .photoContainer {
